@@ -1,0 +1,63 @@
+export const TABLE_HEAD = [
+    "Sr.No",
+    "Hotel Name",
+    "Contact No.",
+    "Email",
+    "Category",
+    "GSTIN No",
+    "Address",
+    "Action"
+  ];
+  
+  export const TABLE_ROWS = [
+    {
+      no: 1,
+      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg",
+      hotelName: "John Michael",
+      contactNo: "123-456-7890",
+      email: "john@creative-tim.com",
+      category: 5,
+      gstin: "29ABCDE1234F2Z5",
+      address: "123, ABC Street, City",
+    },
+    {
+      no: 2,
+      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg",
+      hotelName: "Alexa Liras",
+      contactNo: "234-567-8901",
+      email: "alexa@creative-tim.com",
+      category: 3,
+      gstin: "29ABCDE5678G3H6",
+      address: "456, DEF Street, City",
+    },
+    {
+      no: 3,
+      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg",
+      hotelName: "Laurent Perrier",
+      contactNo: "345-678-9012",
+      email: "laurent@creative-tim.com",
+      category: 4,
+      gstin: "29ABCDE9101J4K7",
+      address: "789, GHI Street, City",
+    },
+    {
+      no: 4,
+      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg",
+      hotelName: "Michael Levi",
+      contactNo: "456-789-0123",
+      email: "michael@creative-tim.com",
+      category: 5,
+      gstin: "29ABCDE2345L5M8",
+      address: "012, JKL Street, City",
+    },
+    {
+      no: 5,
+      img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg",
+      hotelName: "Richard Gran",
+      contactNo: "567-890-1234",
+      email: "richard@creative-tim.com",
+      category: 4,
+      gstin: "29ABCDE6789N6O9",
+      address: "345, MNO Street, City",
+    },
+  ];

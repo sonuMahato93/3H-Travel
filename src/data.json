@@ -1,0 +1,67 @@
+{
+  "TABLE_ROW": [
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
+      "name": "Amiah Pruitt",
+      "create": "02 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$2,231.63",
+      "sent": "9",
+      "status": "paid"
+    },
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
+      "name": "Amazon",
+      "create": "03 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$9,331.63",
+      "sent": "9",
+      "status": "due"
+    },
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
+      "name": "Pinterest",
+      "create": "04 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$5,331.63",
+      "sent": "9",
+      "status": "pending"
+    },
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-google.svg",
+      "name": "Google",
+      "create": "05 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$6,331.63",
+      "sent": "9",
+      "status": "draft"
+    },
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
+      "name": "Netflix",
+      "create": "06 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$2,345.63",
+      "sent": "9",
+      "status": "overdue"
+    },
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-google.svg",
+      "name": "Google",
+      "create": "07 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$2,331.63",
+      "sent": "9",
+      "status": "draft"
+    },
+    {
+      "img": "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
+      "name": "Pingers",
+      "create": "04 Nov 2023",
+      "due": "26 Dec 2023",
+      "amount": "$1,331.63",
+      "sent": "9",
+      "status": "pending"
+    }
+  ]
+}

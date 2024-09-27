@@ -50,7 +50,7 @@ const ProgressCard = ({
   };
 
   return (
-    <div className="flex gap-2 ">
+    <div className="flex gap-2 space-x-14 ">
       {tabs.map((tab, index) => (
         <Card
           key={index}

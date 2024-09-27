@@ -1,10 +1,20 @@
 // store.js
 
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'; // For async actions
-import rootReducer from '../reducers';
+import { configureStore } from "@reduxjs/toolkit";
+import staffReducer from "../reducers/staffReducer";
+import hotellistReducer from "../reducers/HotellistReducer";
+import bookingReducer from "../reducers/BookingReducer";
+import reservationReducer from "../reducers/ReservationReducer";
 
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const store = configureStore({
+    reducer:{
+        staff: staffReducer,
+        hotel: hotellistReducer,
+        booking:bookingReducer,
+        reservation:reservationReducer
+    }
+})
 
 export default store;

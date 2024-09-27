@@ -1,8 +1,7 @@
-
-
-
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStaff } from "./api/api.js";
+import { MdDeleteOutline } from "react-icons/md";
 import {
   Card,
   CardHeader,
@@ -22,9 +21,6 @@ import {
 } from "@heroicons/react/24/solid";
 import { IoEyeOff } from "react-icons/io5";
 import { TABLE_HEAD, TABLE_ROWS } from "./data";
-import { useDispatch, useSelector } from 'react-redux';
-
-
 
 const TABS = [
   {
@@ -41,26 +37,31 @@ const TABS = [
   },
 ];
 
-export function StaffList({openDrawer}) {
+export function StaffList({ openDrawer }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordVisibility, setPasswordVisibility] = useState({});
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const togglePasswordVisibility = (_id) => {
+     console.log(_id);
+     
+    setPasswordVisibility((prevState) => ({
+      ...prevState,
+      [_id]: !prevState[_id],
+    }));
   };
 
-
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users.users);
-  const loading = useSelector((state) => state.users.loading);
-  const error = useSelector((state) => state.users.error);
+  const staff = useSelector((state) => state.staff.staff); // Updated to access staff state
+  const loading = useSelector((state) => state.staff.loading); // Updated to access staff state
+  const error = useSelector((state) => state.staff.error); // Updated to access staff state
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchStaff()); // Dispatching fetchStaff instead of fetchUsers
   }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
+  console.log(staff);
   return (
     <>
       <span className="text-xl text-blue-400">Staff Details</span>
@@ -76,12 +77,12 @@ export function StaffList({openDrawer}) {
               </div>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <Button
-              variant="outlined"
-              size="sm"
-            className="text-blue-500 border-blue-500 bg-blue-50 rounded-3xl"
-              onClick={openDrawer}
-            >
+              <Button
+                variant="outlined"
+                size="sm"
+                className="text-blue-500 border-blue-500 bg-blue-50 rounded-3xl"
+                onClick={openDrawer}
+              >
                 ADD STAFF
               </Button>
             </div>
@@ -108,47 +109,52 @@ export function StaffList({openDrawer}) {
               </tr>
             </thead>
             <tbody>
-              {TABLE_ROWS.map(({ no, img, name, email, password }) => {
-                const isLast = no === TABLE_ROWS.length;
-                const classes = isLast
-                  ? "p-4 "
-                  : "p-4 border-b border-blue-gray-50";
+              {staff.map(
+                ({ _id, firstname, lastname, email, password }, index) => {
+                  const classes =
+                    index === staff.length - 1
+                      ? "p-4"
+                      : "p-4 border-b border-blue-gray-50";
 
-                return (
-                  <tr key={name}>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {no}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <div className="flex items-center gap-3">
-                        <Avatar src={img} alt={name} size="sm" />
-                        <div className="flex flex-col">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {name}
-                          </Typography>
+                  return (
+                    <tr key={_id}>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {index + 1}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <div className="flex items-center gap-3">
+                          <Avatar
+                            src=""
+                            alt={`${firstname} ${lastname}`}
+                            size="sm"
+                          />
+                          <div className="flex flex-col">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {firstname} {lastname}
+                            </Typography>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {email}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {email}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
                       <Typography
                         variant="small"
                         color="blue-gray"
@@ -157,7 +163,7 @@ export function StaffList({openDrawer}) {
                         {showPassword ? password : "*".repeat(10)}
                         <IconButton
                           variant="text"
-                          onClick={togglePasswordVisibility}
+                          onClick={() => togglePasswordVisibility(_id)}
                           className="ml-2"
                         >
                           {showPassword ? (
@@ -168,16 +174,25 @@ export function StaffList({openDrawer}) {
                         </IconButton>
                       </Typography>
                     </td>
-                    <td className={classes}>
-                      <Tooltip content="Edit User">
+
+                      <td className={classes}>
+                        <div className="flex space-x-2 items-center">
+                        <Tooltip content="Edit User">
+                          <IconButton variant="text">
+                            <PencilIcon className="h-4 w-4" />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip content="Delete User">
                         <IconButton variant="text">
-                          <PencilIcon className="h-4 w-4" />
+                        <MdDeleteOutline className="h-4 w-4"/>
                         </IconButton>
-                      </Tooltip>
-                    </td>
-                  </tr>
-                );
-              })}
+                        </Tooltip>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                }
+              )}
             </tbody>
           </table>
         </CardBody>

@@ -1,32 +1,37 @@
 // reducers/userReducer.js
 
-import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from '../../../../3h-travel/3h-travel/src/features/Staff/api/api';
+import {
+  FETCH_STAFF_REQUEST,
+  FETCH_STAFF_SUCCESS,
+  FETCH_STAFF_FAILURE,
+} from "../features/Staff/api/api.js";
 
 const initialState = {
   loading: false,
-  users: [],
+  staff: [],
   error: null,
 };
 
-const userReducer = (state = initialState, action) => {
+const staffReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
-    case FETCH_USERS_REQUEST:
+    case FETCH_STAFF_REQUEST :
       return {
         ...state,
         loading: true,
       };
-    case FETCH_USERS_SUCCESS:
+    case FETCH_STAFF_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: action.payload,
+        staff: action.payload,
         error: null,
       };
-    case FETCH_USERS_FAILURE:
+    case FETCH_STAFF_FAILURE:
       return {
         ...state,
         loading: false,
-        users: [],
+        staff: [],
         error: action.payload,
       };
     default:
@@ -34,4 +39,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default staffReducer;

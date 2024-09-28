@@ -1,12 +1,12 @@
 const sections = [
  
  
-      // {
-      //   id: 1,
-      //   title: "Dashboard",
-      //   icon: "appIcon",
-      //   link: "/app",
-      // },
+      {
+        id: 1,
+        title: "Dashboard",
+        icon: "appIcon",
+        link: "/app/dashboard",
+      },
       {
         id: 2,
         title: "Staff",
@@ -27,7 +27,7 @@ const sections = [
       },
       { id: 5, title: "Booking", icon: "bookingIcon", link: "/app/bookings" },
 
-      { id: 6, title: "Logout", icon: "logOutIcon", link: "/app" },
+      { id: 6, title: "Logout", icon: "logOutIcon", link: "/login" },
 
 ];
 

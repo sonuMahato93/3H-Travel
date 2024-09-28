@@ -88,8 +88,8 @@ const DrawerWithForm = ({ open, onClose }) => {
       </div>
      
       <form className="flex flex-col gap-6 p-4" onSubmit={handleSubmit}>
-        <div className="flex">
-        <Typography variant="h6" color="blue-gray" className="-mb-3">
+        <div className="flex flex-col ">
+        <Typography variant="h6" color="blue-gray" className="mt-2">
           Start Date
         </Typography>
         <DatePicker
@@ -97,7 +97,7 @@ const DrawerWithForm = ({ open, onClose }) => {
           onChange={(date) => handleDateChange(date, "startDate")}
           className="w-full border px-2 py-1 rounded"
         />
-        <Typography variant="h6" color="blue-gray" className="-mb-3">
+        <Typography variant="h6" color="blue-gray" className="mt-3">
           End Date
         </Typography>
         <DatePicker

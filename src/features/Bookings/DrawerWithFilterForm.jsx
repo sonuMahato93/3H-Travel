@@ -121,7 +121,7 @@ const DrawerWithFilterForm = ({ open, onClose }) => {
       </div>
 
       <form className="flex flex-col gap-6 p-4" onSubmit={handleSubmit}>
-        <div className="flex  space-x-2">
+        <div className="flex flex-col  gap-4 ">
           <div className="w-full">
             <Popover
               placement="bottom"

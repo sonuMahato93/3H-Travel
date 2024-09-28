@@ -5,6 +5,9 @@ export const FETCH_STAFF_REQUEST = 'FETCH_STAFF_REQUEST';
 export const FETCH_STAFF_SUCCESS = 'FETCH_STAFF_SUCCESS';
 export const FETCH_STAFF_FAILURE = 'FETCH_STAFF_FAILURE';
 
+export const END_POINTS = {
+  LIST_STAFF: () => 'https://api.jsonbin.io/v3/b/66c9c9bdacd3cb34a878cf6c',
+}
 // Action Creators
 export const fetchStaffRequest = () => ({
   type: FETCH_STAFF_REQUEST,
@@ -25,7 +28,7 @@ export const fetchStaff = () => {
   return async (dispatch) => {
     dispatch(fetchStaffRequest());
     try {
-      const response = await axios.get('https://api.jsonbin.io/v3/b/66c9c9bdacd3cb34a878cf6c');
+      const response = await axios.get(END_POINTS.LIST_STAFF());
       const staffList = response.data.record.users;
       dispatch(fetchStaffSuccess(staffList));
     } catch (error) {

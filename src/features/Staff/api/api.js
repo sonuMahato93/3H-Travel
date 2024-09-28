@@ -18,6 +18,7 @@ export const fetchStaffSuccess = (staffList) => ({
   payload: staffList,
 });
 
+
 export const fetchStaffFailure = (error) => ({
   type: FETCH_STAFF_FAILURE,
   payload: error,
